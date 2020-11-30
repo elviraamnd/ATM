@@ -46,7 +46,7 @@ int main()
                             ketemu=false;
                     }
                     if(ketemu){
-                        printf("\nNomor Rekening sudah ada, coba lagi!");
+                        printf("\nNomor Rekening Sudah Ada, Coba Lagi!");
                     }
                     else {
                         printf("\n================================");
@@ -63,7 +63,7 @@ int main()
                     nas[i].no_rek=no;
 
                     printf("\n================================");
-                    printf("\nMasukkan angka sembarang untuk kembali ke menu : ");
+                    printf("\nMasukkan Angka Sembarang Untuk Kembali Ke Menu : ");
                     scanf("%d", &x);
                     goto menu;
 
@@ -94,16 +94,45 @@ int main()
                 }
                 else
                     printf("\nNomor Rekening Tidak Ditemukan!");
-                    printf("\nMasukkan angka sembarang untuk kembali ke menu : ");
+                    printf("\nMasukkan Angka Sembarang Untuk Kembali Ke Menu : ");
                     scanf("%d", &x);
                     goto menu;
 
         }
         else if(pil==3){
-                printf("");
-
-        }
-        else if(pil==4){
+                printf("\n====================================");
+                printf("\nMasukkan Nomor Rekening : ");
+                scanf("%lf", &no);
+                
+                for(i=0; i<n; i++){
+                            if(no==nas[i].no_rek){
+                                pos=i;
+                                ketemu=true;
+                                break;
+                            }
+                            else
+                                ketemu=false;
+                }
+                if(ketemu){
+                	printf("\n================================");
+                	printf("\nMasukkan Jumlah Penarikan : Rp. ");
+                	scanf("%d", &tarik);
+                	
+                	    if(tarik<(nas[pos].saldo)) {
+                		    nas[pos].saldo=nas[pos].saldo-tarik;
+                		    printf("\nPenarikan Berhasil, Sisa Saldo Anda : Rp. %d", nas[pos].saldo);
+                	        }
+                	    else
+                		    printf("Maaf Saldo Anda Tidak Mencukupi");
+						    }		
+			   else
+				    printf("\nNomor Rekening Tidak Ditemukan!");
+					printf("\nMasukkan Angka Sembarang Untuk Kembali Ke Menu");
+					scanf("%d", &x);
+					goto menu;			
+       			}
+    
+      else if(pil==4){
                 printf("");
 
         }
