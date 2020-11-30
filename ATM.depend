@@ -1,6 +1,0 @@
-# depslib dependency file v1.0
-1606046084 source:c:\programs\atm\main.c
-	<stdio.h>
-	<stdlib.h>
-	<stdbool.h>
-
