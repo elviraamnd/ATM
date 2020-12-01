@@ -104,16 +104,66 @@ int main()
 
         }
         else if(pil==4){
-                printf("");
+               
+                printf("\n|==============================================================|=");
+                printf("\n|                   DAFTAR NASABAH BANK                        |");
+                printf("\n|====|================|============|=============|=============|");
+                printf("\n| NO |  NO REKENING   |    NAMA    |   ALAMAT    | TOTAL SALDO |");
+                printf("\n|====|================|============|=============|=============|");
+            for(i=0; i<n; i++)
+        {
+            printf("%4d", i+1);
+            printf("%lf", nas[i].no_rek);
+            printf("%s", nas[i].nama);
+            printf("%s", nas[i].alamat);
+            printf("%d", (nas[i].saldo)+(nas[i].saldo*0.1));
 
+        }
+         printf ("\n|====|================|============|=============|=============|");
+                printf("\n==========================================================");
+                printf("\n JUMLAH TOTAL SALDO SETELAH DITAMBAH BUNGA 10 %");
+                printf("\n==========================================================");
+                printf("\nMasukkan Angka Sembarang Untuk Kembali Ke Menu");
+					scanf("%d", &x);
+					goto menu;
         }
         else if(pil==5){
-                printf("");
 
+                printf("==========================================================");
+                printf("\nMasukkan Nomor Rekening : ");
+                scanf("%lf", &no);
+            for(i=0; i<n; i++){
+                    if(no==nas[i].no_rek){
+                                pos=i;
+                                ketemu=true;
+                                break;
+                            }
+                            else
+                                ketemu=false;
+                }
+            if(ketemu){
+                printf("\nNOMOR REKENING ANDA : %lf", nas[pos].no_rek);
+                printf("\nNAMA NASABAH        : %s" , nas[pos].nama);
+                printf("\nALAMAT NASABAH      : %s" , nas[pos].alamat);
+                printf("\n SALDO              : Rp. %d" , nas[pos]. saldo);
+                printf("\nTOTAL SALDO SETELAH BUNGA : Rp. %d", (nas[i].saldo)+(nas[i].saldo*0.1));
         }
-        else{
-                printf("");
 
+        else{
+                printf("===================================================================");
+                printf("Nomor Rekening Tidak ditemukan");
+                printf("\nMasukkan Angka Sembarang Untuk Kembali Ke Menu");
+					scanf("%d", &x);
+					goto menu;
+
+        }}
+        else
+        {
+                printf("\n|_____________________________________________________|");
+                printf("\n|       TERIMA KASIH TELAH BERTRANSAKSI DISINI");
+                printf("\n|=====================================================|");
         }
         return 0;
 };
+
+        
