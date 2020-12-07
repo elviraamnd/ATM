@@ -144,16 +144,13 @@ int main()
             printf("%lf", nas[i].no_rek);
             printf("%s", nas[i].nama);
             printf("%s", nas[i].alamat);
-            printf("%d", (nas[i].saldo)+(nas[i].saldo*0.1));
+            printf("%d", (nas[i].saldo));
 
         }
-         printf ("\n|====|================|============|=============|=============|");
-                printf("\n==========================================================");
-                printf("\n JUMLAH TOTAL SALDO SETELAH DITAMBAH BUNGA 10 %");
-                printf("\n==========================================================");
-                printf("\nMasukkan Angka Sembarang Untuk Kembali Ke Menu");
-					scanf("%d", &x);
-					goto menu;
+       	printf ("\n|====|================|============|=============|=============|");
+        printf("\nMasukkan Angka Sembarang Untuk Kembali Ke Menu");
+	scanf("%d", &x);
+	goto menu;
         }
         else if(pil==5){
 
@@ -174,7 +171,6 @@ int main()
                 printf("\nNAMA NASABAH        : %s" , nas[pos].nama);
                 printf("\nALAMAT NASABAH      : %s" , nas[pos].alamat);
                 printf("\n SALDO              : Rp. %d" , nas[pos]. saldo);
-                printf("\nTOTAL SALDO SETELAH BUNGA : Rp. %d", (nas[i].saldo)+(nas[i].saldo*0.1));
         }
 
         else{
