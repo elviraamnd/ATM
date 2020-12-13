@@ -34,7 +34,6 @@ int main()
 
         if(pil==1)
             {
-                lagi:
                     printf("\n================================");
                     printf("\nMasukkan Nomor Rekening : ");
                     scanf("%lf", &no);
@@ -127,7 +126,7 @@ int main()
 			}
 				else
 					printf("\nNomor Rekening Tidak Ditemukan!");
-					printf("\nMasukkan Angka Sembarang Untuk Kembali Ke Menu");
+					printf("\nMasukkan Angka Sembarang Untuk Kembali Ke Menu : ");
 					scanf("%d", &x);
 					goto menu;
        	}
@@ -140,11 +139,12 @@ int main()
                 printf("\n|====|================|============|=============|=============|");
             for(i=0; i<n; i++)
         {
-            printf("%4d", i+1);
-            printf("%lf", nas[i].no_rek);
-            printf("%s", nas[i].nama);
-            printf("%s", nas[i].alamat);
-            printf("%d", (nas[i].saldo));
+            printf("\n");
+	    printf("%3d", i+1);
+            printf("%\t%.lf", nas[i].no_rek);
+            printf("%13s", nas[i].nama);
+            printf("%15s", nas[i].alamat);
+            printf("%16d", (nas[i].saldo));
 
         }
        	printf ("\n|====|================|============|=============|=============|");
@@ -167,18 +167,21 @@ int main()
                                 ketemu=false;
                 }
             if(ketemu){
-                printf("\nNOMOR REKENING ANDA : %lf", nas[pos].no_rek);
+                printf("\nNOMOR REKENING ANDA : %.lf", nas[pos].no_rek);
                 printf("\nNAMA NASABAH        : %s" , nas[pos].nama);
                 printf("\nALAMAT NASABAH      : %s" , nas[pos].alamat);
-                printf("\n SALDO              : Rp. %d" , nas[pos]. saldo);
+                printf("\nSALDO               : Rp. %d" , nas[pos]. saldo);
+		printf("\nMasukkan Angka Sembarang Untuk Kembali Ke Menu : ");
+                scanf("%d", &x);
+                goto menu;
         }
 
         else{
                 printf("===================================================================");
                 printf("Nomor Rekening Tidak ditemukan");
-                printf("\nMasukkan Angka Sembarang Untuk Kembali Ke Menu");
-					scanf("%d", &x);
-					goto menu;
+                printf("\nMasukkan Angka Sembarang Untuk Kembali Ke Menu : ");
+		scanf("%d", &x);
+		goto menu;
 
         }}
         else
