@@ -16,7 +16,7 @@ int main()
     int i, pil, x, pos, TB, saldo, nominal_tujuan, piltrf;
     long int no;
     long int no_rek;
-    long int no_tujuan
+    long int no_tujuan;
     int setor, tarik;
     bool ketemu=0;
     menu :
@@ -134,11 +134,101 @@ int main()
 					goto menu;
        	}
 	
-	
-	
-	
-	
-	
+	else if(pil==4){
+
+        	printf("\n=======================================");
+        	printf("\n|  1. Transfer Ke Rekening Bank KLP 4 |");
+		printf("\n|  2. Transfer Ke Rekening Bank Lain  |");
+		printf("\nPilihan anda : ");
+		scanf("%d", &piltrf);
+
+			switch(piltrf){
+				case 1:
+					printf("\n====================================");
+                			printf("\nMasukkan Nomor Rekening Anda: ");
+                			scanf("%lf", &no);
+
+                			for(i=0; i<n; i++){
+                    				if(no==nas[i].no_rek){
+                                		pos=i;
+                                		ketemu=true;
+                            				}
+                            			else
+                                		ketemu=false;
+
+
+						if(ketemu){
+
+						printf("\nMasukan No.Rek Tujuan: ");
+						scanf("%d", &no_tujuan);
+
+						printf("\nMasukan Nominal yang akan ditransfer: Rp.");
+						scanf("%d", &nominal_tujuan);
+
+						if(nominal_tujuan<(nas[pos].saldo)){
+				    		nas[pos].saldo = nas[pos].saldo - nominal_tujuan;
+						printf("\nTransfer Berhasil, Saldo anda sekarang: Rp.%d", nas[pos].saldo);
+						printf("\nMasukkan Angka Sembarang Untuk Kembali Ke Menu");
+						scanf("%d", &x);
+						goto menu;
+							}
+						else if(nominal_tujuan>(nas[pos].saldo)){
+						printf("\nMaaf Saldo Anda Tidak Mencukupi");
+						printf("\nMasukkan Angka Sembarang Untuk Kembali Ke Menu");
+						scanf("%d", &x);
+						goto menu;
+							}
+					}
+
+			}	}
+			switch(piltrf){
+				case 2:
+					printf("\n====================================");
+                			printf("\nTransfer Ke Rekening Bank Lain Akan Dikenakan Pajak Rp.6.500 Lanjutkan?(y/t): "); scanf("%s", &b1);
+                				if (b1=='y' || b1=='Y'){
+                				goto trfbeda;
+						}
+						else {
+						goto menu;
+						}
+
+
+						trfbeda:
+						TB=6500;
+
+						printf("\n====================================");
+                        			printf("\nMasukkan Nomor Rekening Anda: ");
+                        			scanf("%lf", &no);
+
+                            			for(i=0; i<n; i++){
+                    					if(no==nas[i].no_rek){
+                               				pos=i;
+                                			ketemu=true;
+                            				}
+                           			else
+                                		ketemu=false;
+
+
+						if(ketemu){
+						printf("\nMasukan No.Rek Tujuan: ");
+						scanf("%d", &no_tujuan);
+						printf("\nMasukan Nominal yang akan ditransfer: Rp.");
+						scanf("%d", &nominal_tujuan);
+
+						if(nominal_tujuan<nas[pos].saldo){
+                        			nas[pos].saldo= nas[pos].saldo - nominal_tujuan - TB;
+						printf("\nTransfer Berhasil, Saldo anda sekarang: Rp.%d", nas[pos].saldo);
+						printf("\nMasukkan Angka Sembarang Untuk Kembali Ke Menu");
+                        			scanf("%d", &x);
+                        			goto menu;
+                           				}
+						else if (nominal_tujuan>nas[pos].saldo){
+						printf("\nMaaf Saldo Anda Tidak Mencukupi");
+						printf("\nMasukkan Angka Sembarang Untuk Kembali Ke Menu");
+                        			scanf("%d", &x);
+                        			goto menu;
+		  					}
+			}
 	
 	
         else if(pil==5){
@@ -202,6 +292,7 @@ int main()
                 printf("\n|=====================================================|");
         }
         return 0;
-};
+
+}}}};
 
         
