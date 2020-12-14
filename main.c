@@ -6,16 +6,18 @@ struct nasabah
     char nama[50];
     char alamat[30];
     long int no_rek;
-    double saldo;
+    int saldo;
 };
 int main()
 {
     int n=0;
+    char b1;
     struct nasabah nas[50];
-    int i, pil, x, pos;
+    int i, pil, x, pos, TB, saldo, nominal_tujuan, piltrf;
     long int no;
     long int no_rek;
-    double setor, tarik;
+    long int no_tujuan
+    int setor, tarik;
     bool ketemu=0;
     menu :
         printf("\n==================================");
@@ -25,9 +27,10 @@ int main()
         printf("\n|  1. Pendaftaran Nasabah        |");
         printf("\n|  2. Menabung                   |");
         printf("\n|  3. Penarikan                  |");
-        printf("\n|  4. Cetak Daftar Nasabah       |");
-        printf("\n|  5. Cari Nasabah               |");
-        printf("\n|  6. Keluar                     |");
+	printf("\n|  4. Transfer                   |");
+        printf("\n|  5. Cetak Daftar Nasabah       |");
+        printf("\n|  6. Cari Nasabah               |");
+        printf("\n|  7. Keluar                     |");
         printf("\n|________________________________|");
         printf("\nPilihan anda : ");
         scanf("%d", &pil);
@@ -130,7 +133,15 @@ int main()
 					scanf("%d", &x);
 					goto menu;
        	}
-        else if(pil==4){
+	
+	
+	
+	
+	
+	
+	
+	
+        else if(pil==5){
                
                 printf("\n|==============================================================|=");
                 printf("\n|                   DAFTAR NASABAH BANK                        |");
@@ -152,7 +163,7 @@ int main()
 	scanf("%d", &x);
 	goto menu;
         }
-        else if(pil==5){
+        else if(pil==6){
 
                 printf("==========================================================");
                 printf("\nMasukkan Nomor Rekening : ");
