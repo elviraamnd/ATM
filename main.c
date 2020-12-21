@@ -246,9 +246,14 @@ int main()
             printf("%13s", nas[i].nama);
             printf("%15s", nas[i].alamat);
             printf("%16d", (nas[i].saldo));
+	    printf("%16d", (nas[i].saldo)+(nas[i].saldo*0.1));
 
         }
-       	printf ("\n|====|================|============|=============|=============|");
+		
+       	printf("\n|====|================|============|=============|=============|");
+	printf("\n|==============================================================|");
+        printf("\n|    JUMLAH TOTAL SALDO SETELAH DITAMBAH BUNGA 10 %            |");
+        printf("\n|______________________________________________________________|\n");
         printf("\nMasukkan Angka Sembarang Untuk Kembali Ke Menu");
 	scanf("%d", &x);
 	goto menu;
@@ -272,6 +277,7 @@ int main()
                 printf("\nNAMA NASABAH        : %s" , nas[pos].nama);
                 printf("\nALAMAT NASABAH      : %s" , nas[pos].alamat);
                 printf("\nSALDO               : Rp. %d" , nas[pos]. saldo);
+		printf("\nTOTAL SALDO SETELAH BUNGA : Rp. %d\n", (nas[i].saldo)+(nas[i].saldo*0.1));
 		printf("\nMasukkan Angka Sembarang Untuk Kembali Ke Menu : ");
                 scanf("%d", &x);
                 goto menu;
