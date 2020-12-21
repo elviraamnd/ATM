@@ -154,7 +154,7 @@ int main()
                                 		ketemu=true;
                             				}
                             			else
-                                		ketemu=false;
+                                		ketemu=false;}
 
 
 						if(ketemu){
@@ -168,19 +168,24 @@ int main()
 						if(nominal_tujuan<(nas[pos].saldo)){
 				    		nas[pos].saldo = nas[pos].saldo - nominal_tujuan;
 						printf("\nTransfer Berhasil, Saldo anda sekarang: Rp.%d", nas[pos].saldo);
-						printf("\nMasukkan Angka Sembarang Untuk Kembali Ke Menu");
+						printf("\nMasukkan Angka Sembarang Untuk Kembali Ke Menu : ");
 						scanf("%d", &x);
 						goto menu;
 							}
 						else if(nominal_tujuan>(nas[pos].saldo)){
 						printf("\nMaaf Saldo Anda Tidak Mencukupi");
-						printf("\nMasukkan Angka Sembarang Untuk Kembali Ke Menu");
+						printf("\nMasukkan Angka Sembarang Untuk Kembali Ke Menu : ");
 						scanf("%d", &x);
 						goto menu;
 							}
 					}
+					else
+                   		 	printf("\nNomor Rekening Tidak Ditemukan!");
+                    			printf("\nMasukkan Angka Sembarang Untuk Kembali Ke Menu : ");
+                    			scanf("%d", &x);
+                    			goto menu;
 
-			}	}
+			}	
 			switch(piltrf){
 				case 2:
 					printf("\n====================================");
@@ -206,7 +211,7 @@ int main()
                                 			ketemu=true;
                             				}
                            			else
-                                		ketemu=false;
+                                		ketemu=false;}
 
 
 						if(ketemu){
@@ -228,12 +233,16 @@ int main()
                         			scanf("%d", &x);
                         			goto menu;
 		  					}
-			}
-	
-	
+						} 
+						else
+                    				printf("\nNomor Rekening Tidak Ditemukan!");
+                    				printf("\nMasukkan Angka Sembarang Untuk Kembali Ke Menu : ");
+                    				scanf("%d", &x);
+                    				goto menu;
+			}}
         else if(pil==5){
                
-                printf("\n|==============================================================|=");
+                printf("\n|==============================================================|");
                 printf("\n|                   DAFTAR NASABAH BANK                        |");
                 printf("\n|====|================|============|=============|=============|");
                 printf("\n| NO |  NO REKENING   |    NAMA    |   ALAMAT    | TOTAL SALDO |");
@@ -254,7 +263,7 @@ int main()
 	printf("\n|==============================================================|");
         printf("\n|    JUMLAH TOTAL SALDO SETELAH DITAMBAH BUNGA 10 %            |");
         printf("\n|______________________________________________________________|\n");
-        printf("\nMasukkan Angka Sembarang Untuk Kembali Ke Menu");
+        printf("\nMasukkan Angka Sembarang Untuk Kembali Ke Menu : ");
 	scanf("%d", &x);
 	goto menu;
         }
@@ -284,8 +293,8 @@ int main()
         }
 
         else{
-                printf("===================================================================");
-                printf("Nomor Rekening Tidak ditemukan");
+                printf("==========================================================");
+                printf("\nNomor Rekening Tidak ditemukan!");
                 printf("\nMasukkan Angka Sembarang Untuk Kembali Ke Menu : ");
 		scanf("%d", &x);
 		goto menu;
@@ -299,6 +308,6 @@ int main()
         }
         return 0;
 
-}}}};
+};
 
         
