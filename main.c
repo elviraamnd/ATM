@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <time.h>
 struct nasabah
 {
     char nama[50];
@@ -12,21 +13,24 @@ int main()
 {
     int n=0;
     char b1;
-    struct nasabah nas[50];
-    int i, pil, x, pos, TB, saldo, nominal_tujuan, piltrf;
+    struct nasabah nas[50], pen[50];
+    int i, j, pil, x, pos, pas, TB, saldo, nominal_tujuan, piltrf;
     long int no;
     long int no_rek;
     long int no_tujuan;
     int setor, tarik;
     bool ketemu=0;
+    time_t ambil_waktu;
+    printf("Selamat Datang di BANK INDONESIA!");
+    printf("\nSilahkan tentukan pilihan anda : \n");
     menu :
         printf("\n==================================");
-        printf("\n|           BANK KLP 4           |");
+        printf("\n|         BANK INDONESIA         |");
         printf("\n==================================");
         printf("\n__________Menu Transaksi__________");
         printf("\n|  1. Pendaftaran Nasabah        |");
-        printf("\n|  2. Menabung                   |");
-        printf("\n|  3. Penarikan                  |");
+        printf("\n|  2. Setor Tunai                |");
+        printf("\n|  3. Tarik Tunai                |");
 	printf("\n|  4. Transfer                   |");
         printf("\n|  5. Cetak Daftar Nasabah       |");
         printf("\n|  6. Cari Nasabah               |");
@@ -67,6 +71,7 @@ int main()
                     printf("\n================================");
                     printf("\nMasukkan Angka Sembarang Untuk Kembali Ke Menu : ");
                     scanf("%d", &x);
+		    system("clear");
                     goto menu;
 
         }
@@ -93,11 +98,50 @@ int main()
 
                     printf("\nSetoran Berhasil!");
                     printf("\nJumlah Saldo Anda : Rp. %d", nas[pos].saldo);
+			
+		    printf("\nApakah anda ingin mencetak resi(y/t)?");
+                    scanf("%s", &b1);
+
+                   	 if (b1=='y' || b1=='Y'){
+			    time(&ambil_waktu);
+			    FILE * fPointer;
+			    fPointer = fopen ("setortunai.txt", "w");
+
+			    fprintf (fPointer, "		  BANK INDONESIA        \n");
+			    fprintf (fPointer, "\n");
+			    fprintf (fPointer, "%s", ctime (&ambil_waktu));
+			    fprintf (fPointer, "KCU JPU CRM-1\n");
+			    fprintf (fPointer, "==============================================\n");
+
+			    fprintf (fPointer, " %.lf\n", nas[pos].no_rek);
+			    fprintf (fPointer, "\nDEPOSIT KE TABUNGAN   		    Rp.%d", setor);
+			    fprintf (fPointer, "\nSALDO ANDA  		            Rp.%d", nas[pos].saldo);
+			    fprintf (fPointer, "\n");
+			    fprintf (fPointer, "\n");
+			    fprintf (fPointer, "\n");
+			    fprintf (fPointer, "		  BANK INDONESIA        \n");
+			    fprintf (fPointer, "\n");
+			    fprintf (fPointer, "\n");
+			    fprintf (fPointer, "Kunjungi www.bankindonesia.com untuk infomasi\n");
+			    fprintf (fPointer, "             promo-promo menarik             \n");
+
+			    fclose(fPointer);
+			    printf("\nResi sudah tercetak!");
+			    printf("\nMasukkan Angka Sembarang Untuk Kembali Ke Menu : ");
+			    scanf("%d", &x);
+			    system("clear");
+			    goto menu;
+
+                    	}
+                    	else
+                        	system("clear");
+                        	goto menu;
                 }
                 else
                     printf("\nNomor Rekening Tidak Ditemukan!");
                     printf("\nMasukkan Angka Sembarang Untuk Kembali Ke Menu : ");
                     scanf("%d", &x);
+		    system("clear");
                     goto menu;
 
         }
@@ -123,6 +167,45 @@ int main()
                 	if(tarik<(nas[pos].saldo)) {
                 		nas[pos].saldo=nas[pos].saldo-tarik;
                 		printf("\nPenarikan Berhasil, Sisa Saldo Anda : Rp. %d", nas[pos].saldo);
+				
+				printf("\nApakah anda ingin mencetak resi(y/t)?");
+				scanf("%s", &b1);
+
+                        	if (b1=='y' || b1=='Y'){
+					time(&ambil_waktu);
+					FILE * fPointer;
+					fPointer = fopen ("penarikan.txt", "w");
+
+					fprintf (fPointer, "		  BANK INDONESIA        \n");
+					fprintf (fPointer, "\n");
+					fprintf (fPointer, "%s", ctime (&ambil_waktu));
+					fprintf (fPointer, "KCU JPU CRM-1\n");
+					fprintf (fPointer, "==============================================\n");
+
+					fprintf (fPointer, " %.lf\n", nas[pos].no_rek);
+					fprintf (fPointer, "\nPenarikan Jumlah   		    Rp.%d", tarik);
+					fprintf (fPointer, "\nSALDO ANDA  		            Rp.%d", nas[pos].saldo);
+					fprintf (fPointer, "\n");
+					fprintf (fPointer, "\n");
+					fprintf (fPointer, "\n");
+					fprintf (fPointer, "		  BANK INDONESIA        \n");
+					fprintf (fPointer, "\n");
+					fprintf (fPointer, "\n");
+					fprintf (fPointer, "Kunjungi www.bankindonesia.com untuk infomasi\n");
+					fprintf (fPointer, "             promo-promo menarik             \n");
+
+					fclose(fPointer);
+					printf("\nResi sudah tercetak!");
+					printf("\nMasukkan Angka Sembarang Untuk Kembali Ke Menu : ");
+					scanf("%d", &x);
+					system("clear");
+					goto menu;
+
+				}
+				else
+					system("clear");
+					goto menu;
+
                 	}
                 	else
                 		printf("Maaf Saldo Anda Tidak Mencukupi");
@@ -131,14 +214,15 @@ int main()
 					printf("\nNomor Rekening Tidak Ditemukan!");
 					printf("\nMasukkan Angka Sembarang Untuk Kembali Ke Menu : ");
 					scanf("%d", &x);
+					system("clear");
 					goto menu;
        	}
 	
 	else if(pil==4){
 
-        	printf("\n=======================================");
-        	printf("\n|  1. Transfer Ke Rekening Bank KLP 4 |");
-		printf("\n|  2. Transfer Ke Rekening Bank Lain  |");
+        	printf("\n===========================================");
+        	printf("\n|  1. Transfer Ke Rekening Bank Indonesia |");
+		printf("\n|  2. Transfer Ke Rekening Bank Lain      |");
 		printf("\nPilihan anda : ");
 		scanf("%d", &piltrf);
 
@@ -161,21 +245,32 @@ int main()
 
 						printf("\nMasukan No.Rek Tujuan: ");
 						scanf("%d", &no_tujuan);
+							
+							for(j=0; j<n; j++){
+                    						if(no==pen[j].no_rek){
+                                					pas=i;
+                                					ketemu=true;
+                            				}
+                            				else
+                                				ketemu=false;}
 
 						printf("\nMasukan Nominal yang akan ditransfer: Rp.");
 						scanf("%d", &nominal_tujuan);
 
 						if(nominal_tujuan<(nas[pos].saldo)){
 				    		nas[pos].saldo = nas[pos].saldo - nominal_tujuan;
+						nas[pas].saldo = nas[pas].saldo + nominal_tujuan;
 						printf("\nTransfer Berhasil, Saldo anda sekarang: Rp.%d", nas[pos].saldo);
 						printf("\nMasukkan Angka Sembarang Untuk Kembali Ke Menu : ");
 						scanf("%d", &x);
+						system("clear");
 						goto menu;
 							}
 						else if(nominal_tujuan>(nas[pos].saldo)){
 						printf("\nMaaf Saldo Anda Tidak Mencukupi");
 						printf("\nMasukkan Angka Sembarang Untuk Kembali Ke Menu : ");
 						scanf("%d", &x);
+						system("clear");
 						goto menu;
 							}
 					}
@@ -183,6 +278,7 @@ int main()
                    		 	printf("\nNomor Rekening Tidak Ditemukan!");
                     			printf("\nMasukkan Angka Sembarang Untuk Kembali Ke Menu : ");
                     			scanf("%d", &x);
+					system("clear");
                     			goto menu;
 
 			}	
@@ -225,12 +321,14 @@ int main()
 						printf("\nTransfer Berhasil, Saldo anda sekarang: Rp.%d", nas[pos].saldo);
 						printf("\nMasukkan Angka Sembarang Untuk Kembali Ke Menu");
                         			scanf("%d", &x);
+						system("clear");
                         			goto menu;
                            				}
 						else if (nominal_tujuan>nas[pos].saldo){
 						printf("\nMaaf Saldo Anda Tidak Mencukupi");
 						printf("\nMasukkan Angka Sembarang Untuk Kembali Ke Menu");
                         			scanf("%d", &x);
+						system("clear");
                         			goto menu;
 		  					}
 						} 
@@ -238,6 +336,7 @@ int main()
                     				printf("\nNomor Rekening Tidak Ditemukan!");
                     				printf("\nMasukkan Angka Sembarang Untuk Kembali Ke Menu : ");
                     				scanf("%d", &x);
+						system("clear");
                     				goto menu;
 			}}
         else if(pil==5){
@@ -264,6 +363,7 @@ int main()
         printf("\n|______________________________________________________________|\n");
         printf("\nMasukkan Angka Sembarang Untuk Kembali Ke Menu : ");
 	scanf("%d", &x);
+	system("clear");
 	goto menu;
         }
         else if(pil==6){
@@ -288,6 +388,7 @@ int main()
 		printf("\nTOTAL SALDO SETELAH BUNGA : Rp. %lf\n", (nas[i].saldo)+(nas[i].saldo*0.1));
 		printf("\nMasukkan Angka Sembarang Untuk Kembali Ke Menu : ");
                 scanf("%d", &x);
+		system("clear");
                 goto menu;
         }
 
@@ -296,15 +397,20 @@ int main()
                 printf("\nNomor Rekening Tidak ditemukan!");
                 printf("\nMasukkan Angka Sembarang Untuk Kembali Ke Menu : ");
 		scanf("%d", &x);
+		system("clear");
 		goto menu;
 
         }}
-        else
+        else if(pil==7)
         {
                 printf("\n|_____________________________________________________|");
                 printf("\n|       TERIMA KASIH TELAH BERTRANSAKSI DISINI");
                 printf("\n|=====================================================|");
         }
+	else 
+		printf("Nomor yang anda masukkan tidak sesuai, coba lagi!");
+            	system("clear");
+            	goto menu;
         return 0;
 
 };
